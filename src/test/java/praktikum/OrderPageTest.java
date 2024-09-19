@@ -1,13 +1,17 @@
-package Praktikum;
+package praktikum;
 
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+import java.time.Duration;
 
 @RunWith(Parameterized.class)
 public class OrderPageTest {
@@ -34,12 +38,12 @@ public class OrderPageTest {
         this.selectcolor = selectcolor;
         this.commitcurier = commitcurier;
     }
-
-    @Before
-    public void startUp() {
-        WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
-    }
+ @Before
+public void startUpChrome() {
+    WebDriverManager.chromedriver().setup();
+    driver = new ChromeDriver();
+    driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+}
 
     @Parameterized.Parameters
     public static Object[][] detCustomerData() {
@@ -72,10 +76,17 @@ public class OrderPageTest {
         objOrderPage.fillRenterInfoForm(userName,secondName,adress,metrostationid,userPhone,testdata,dropdownselect,selectcolor,commitcurier);
 
     }
-
-
-
+    @After
+    public void tearDown() {
+        if (driver != null) {
+            driver.quit();
+        }
+    }
 }
+
+
+
+
 
 
 

@@ -1,4 +1,4 @@
-package Praktikum;
+package praktikum;
 
 
 
@@ -13,6 +13,8 @@ import org.junit.runners.Parameterized;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+
+import java.time.Duration;
 
 @RunWith(Parameterized.class)
 public class HomePageTest {
@@ -51,14 +53,8 @@ public class HomePageTest {
     public void startUpChrome() {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
     }
-
-    @Before
-    public void startUpFireFox() {
-        WebDriverManager.firefoxdriver().setup();
-        driver = new FirefoxDriver();
-    }
-
 
     @Test
     public void test(){
