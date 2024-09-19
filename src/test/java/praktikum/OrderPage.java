@@ -1,4 +1,4 @@
-package Praktikum;
+package praktikum;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -10,7 +10,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 
 //Главная страница ЯндексСамокат
-class HomePage {
+class  HomePage {
     private final WebDriver driver;
     //Локатор куки
     private final By cookie = By.id("rcc-confirm-button");
